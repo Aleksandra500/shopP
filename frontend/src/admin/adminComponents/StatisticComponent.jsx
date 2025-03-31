@@ -64,18 +64,18 @@ function StatisticComponent() {
 
  
   return (
-    <div className="h-full  flex items-center justify-center bg-gray-100 p-10"> 
+    <div className="h-full  md:flex sm:flex-col  items-center justify-center bg-gray-100 p-10"> 
     {/* Ovo će omogućiti da sadržaj bude centriran sa paddingom na vrhu */}
     
     {/* Leva strana - Grafikon */}
-    <div className="w-3/5 pr-6 mr-3">
+    <div className="md:w-3/5 sm:w-full md:pr-6 md:mr-3  ">
       <h3 className="text-2xl font-semibold text-gray-800 mb-4">Revenue Over Time</h3>
       <Line data={chartData} />
     </div>
   
     {/* Desna strana - Podaci */}
-    <div className="w-2/5 flex flex-col items-center justify-center">
-      <h1 className="text-3xl font-bold text-gray-800 mb-5">Dashboard</h1>
+    <div className="md:w-2/5 sm:w-full flex flex-col items-center justify-center ">
+      <h1 className="text-3xl font-bold text-gray-800 mb-5 sm:mt-20">Dashboard</h1>
       <div className="grid grid-cols-1 gap-6 w-full">
         <div className="bg-white p-6 rounded-2xl shadow-md text-center">
           <h2 className="text-lg font-semibold text-gray-600">Users</h2>
