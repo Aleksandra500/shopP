@@ -71,7 +71,7 @@ function CartPage() {
                                     >
                                         <TableCell component='th' scope='row'>
                                             <img
-                                                src={`http://localhost:8800/uploads/${product.image}`}
+                                                src={`https://backendshopp-wzfh.onrender.com/uploads/${product.image}`}
                                                 alt=''
                                                 className='w-[50px] h-[60px] lg:w-[90px] lg:h-[90px] border border-mainBlue rounded-lg object-cover'
                                             />

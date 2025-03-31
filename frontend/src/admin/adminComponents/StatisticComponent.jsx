@@ -29,7 +29,7 @@ function StatisticComponent() {
 
   // Fetch podaci iz API-ja
   useEffect(() => {
-    fetch("http://localhost:8800/api/orders")
+    fetch("https://backendshopp-wzfh.onrender.com/api/orders")
       .then((res) => res.json())
       .then((data) => {
         setOrders(data); // Postavljamo dobijene porudžbine u state

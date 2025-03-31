@@ -14,7 +14,7 @@ function CardComponent({ product, isGrid }) {
       }
     >
       <img
-        src={`http://localhost:8800/uploads/${product.image}`}
+        src={`https://backendshopp-wzfh.onrender.com/uploads/${product.image}`}
         alt=''
         className={
           isGrid === 'gridView'

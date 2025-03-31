@@ -35,7 +35,7 @@ app.all('*', (req, res, next) => {
 
 app.use(errorController)
 
-app.listen(8800, () => {
+app.listen(process.env.PORT, () => {
     console.log('contected 👩‍💻');
     
 } )
