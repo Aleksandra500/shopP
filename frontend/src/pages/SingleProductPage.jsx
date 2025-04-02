@@ -47,7 +47,7 @@ function SingleProductPage() {
             {/* Left Side - Product Image */}
             <div className="w-full lg:w-1/2">
             <img 
-            src={`https://backendshopp-wzfh.onrender.com/uploads/${product.image}`} 
+            src={`http://localhost:8800/uploads/${product.image}`} 
             className="max-h-[600px] w-full object-contain rounded-lg "
            />
             </div>

@@ -1,11 +1,10 @@
 const mysql = require('mysql2');
-require('dotenv').config(); // Učitavanje .env varijabli
 
 const db = mysql.createConnection({
-    host: process.env.DB_HOST || "localhost",
-    user: process.env.DB_USER || "root",
-    password: process.env.DB_PASS || "my_sql_pass",
-    database: process.env.DB_NAME || "test"
+    host: "localhost",
+    user: "root",
+    password: "my_sql_pass", 
+    database: "test"
 });
 
 db.connect((err) => {

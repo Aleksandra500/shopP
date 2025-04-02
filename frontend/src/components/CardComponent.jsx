@@ -3,7 +3,7 @@ import { Rating } from '@mui/material';
 
 // ovo su parametri
 // { product, isGrid }
-// eslint-disable-next-line react/prop-types
+
 function CardComponent({ product, isGrid }) {
   return (
     <div
@@ -14,7 +14,7 @@ function CardComponent({ product, isGrid }) {
       }
     >
       <img
-        src={`https://backendshopp-wzfh.onrender.com/uploads/${product.image}`}
+        src={`http://localhost:8800/uploads/${product.image}`}
         alt=''
         className={
           isGrid === 'gridView'

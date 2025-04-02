@@ -8,7 +8,7 @@ const AppError = require('./utils/AppError')
 const multer = require('multer')
 const app = express()
 require("dotenv").config();
-
+const db = require('./db');
 
 app.use(express.urlencoded({ extended: false}))
 app.use(express.json())
