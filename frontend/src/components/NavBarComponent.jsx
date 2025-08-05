@@ -105,15 +105,11 @@ function NavBarComponent() {
 
                 {/*loginSystem & cart/Favorite */}
                 <div className='flex items-center gap-[15px] justify-end'>
-                    <div className='flex items-center gap-[5px] text-textWhite cursor-pointer'>
-                        <CiUser onClick={() => navigate('authorization')} size={24} color='white' />
-                        {/* <SignedOut>
-							<SignInButton />
-						</SignedOut>
-						<SignedIn>
-							<UserButton showName />
-						</SignedIn> */}
-                    </div>
+    {!user && (
+        <div className='flex items-center gap-[5px] text-textWhite cursor-pointer'>
+            <CiUser onClick={() => navigate('authorization')} size={24} color='white' />
+        </div>
+    )}
 
                     <div className='flex items-center gap-[5px]'>
                         <CiHeart size={24} color='white' />
