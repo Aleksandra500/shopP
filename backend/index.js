@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 require('dotenv').config();
 
 const db = require('./db');
@@ -19,14 +20,14 @@ app.use(express.json());
 
 // Serve statičkih fajlova (slike)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
+const uploadDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir);
 // CORS konfiguracija
 const allowedOrigins = [
-    'http://localhost:5173',
-    'https://shop-p-ecru.vercel.app',
-    'https://shop-fujduicqk-aleksandras-projects-79a46c16.vercel.app'
+    'http://localhost:5173', 
+    'https://shop-p-ecru.vercel.app', // production
+    'https://shop-p-aleksandras-projects-79a46c16.vercel.app' // preview
 ];
-
 app.use(cors({
     origin: (origin, callback) => {
         if (!origin) return callback(null, true); // npr. curl ili mobilni app
