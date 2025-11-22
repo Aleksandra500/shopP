@@ -5,7 +5,7 @@ import { showLoaderAction } from '../../store/loaderSlice';
 import { saveAllProductsAction } from '../../store/productSlice';
 import DeleteProductModal from './modals/DeleteProductModal';
 import EditProductModal from './modals/EditProductModal';
-
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 
 function ManageProducts() {
@@ -50,7 +50,7 @@ function ManageProducts() {
                             <div className='mr-4 text-3xl text-pink-600  p-3 rounded-full'>{index + 1}</div>
                             <div className='flex items-center space-x-4'>
                                 <img
-                                    src={`http://localhost:8800/uploads/${product.image}`}
+                                    src={`${BASE_URL}/uploads/${product.image}`}
                                     alt={product.title}
                                     className='w-16 h-22 object-cover rounded-md'
                                 />

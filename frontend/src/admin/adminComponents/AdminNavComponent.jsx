@@ -34,7 +34,7 @@ function AdminNavComponent() {
           </div>
           <div className="flex items-center justify-center space-x-3 cursor-pointer" onClick={() => setActiveTab("statistic")}>
             <FiActivity size={28} color="pink" />
-            <span className="text-xl text-white">Statistic</span>
+            <span className="text-xl text-white">tic</span>
           </div>
           <div className="flex items-center justify-center space-x-3 cursor-pointer" onClick={() => setActiveTab("addProduct")}>
             <MdAdd size={28} color="pink" />

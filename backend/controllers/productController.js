@@ -2,6 +2,8 @@
 const db = require('../db'); 
 const fs = require("fs");
 const path = require("path");
+require("dotenv").config();
+const BASE_URL = process.env.BASE_URL
 
 
 exports.getAllProduct = (req, res, next) => {
@@ -17,7 +19,7 @@ exports.getAllProduct = (req, res, next) => {
        
         const productsWithImages = results.map(product => ({ 
             ...product, 
-           image_url: `http://localhost:8800/uploads/${product.image.replace('uploads/', '')}`
+           image_url: `${BASE_URL}/uploads/${product.image.replace('uploads/', '')}`
         }));
         
         
@@ -88,7 +90,7 @@ exports.singleProduct = async (req, res, next) => {
         // Dodavanje punog URL-a za sliku
         const product = {
             ...result[0], 
-            image_url: `http://localhost:8800/uploads/${result[0].image.replace('uploads/', '')}`
+            image_url: `${BASE_URL}/uploads/${result[0].image.replace('uploads/', '')}`
         };
 
         res.status(200).json({

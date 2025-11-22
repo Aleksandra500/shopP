@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getToken } from "../utils/getToken";
 
-axios.defaults.baseURL='http://localhost:8800';
+
 
 axios.interceptors.request.use(function (config) {
     const token = getToken();

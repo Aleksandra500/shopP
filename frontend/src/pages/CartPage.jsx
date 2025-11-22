@@ -8,7 +8,7 @@ import Paper from '@mui/material/Paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteFromCartAction, setPriceHandleAction } from '../store/cartSlice';
 import { useEffect, useRef, useState } from 'react';
-
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 function CartPage() {
     const [cartData, setCartData] = useState([]);
     const [activeCode, setActiveCode] = useState('');
@@ -71,7 +71,7 @@ function CartPage() {
                                     >
                                         <TableCell component='th' scope='row'>
                                             <img
-                                                src={`http://localhost:8800/uploads/${product.image}`}
+                                                src={`${BASE_URL}/uploads/${product.image}`}
                                                 alt=''
                                                 className='w-[50px] h-[60px] lg:w-[90px] lg:h-[90px] border border-mainBlue rounded-lg object-cover'
                                             />

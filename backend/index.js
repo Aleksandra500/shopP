@@ -12,12 +12,27 @@ const db = require('./db');
 
 app.use(express.urlencoded({ extended: false}))
 app.use(express.json())
-app.use(cors())
+
 app.use('/uploads', express.static('uploads'));
 
 
 
+const allowedOrigins = [
+    'http://localhost:5173', 
+    process.env.FRONTEND_URL
+];
 
+app.use(cors({
+    origin: (origin, callback) => {
+        // Dozvoli sve requestove bez origin-a (npr. mobilne app, curl...)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
+        return callback(new Error('Not allowed by CORS'));
+    },
+    credentials: true
+}));
 const upload = multer({ dest: './uploads/' })
 
 app.post('/upload', upload.single('file'), function (req, res, next) {

@@ -7,7 +7,7 @@ import { saveInCartAction } from '../store/cartSlice';
 import { updateFavoriteAction } from '../store/favoriteSlice';
 import { FaShippingFast, FaHeart } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
-
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 function SingleProductPage() {
     const { id } = useParams();
     const dispatch = useDispatch();
@@ -47,7 +47,7 @@ function SingleProductPage() {
             {/* Left Side - Product Image */}
             <div className="w-full lg:w-1/2">
             <img 
-            src={`http://localhost:8800/uploads/${product.image}`} 
+            src={`${BASE_URL}/uploads/${product.image}`} 
             className="max-h-[600px] w-full object-contain rounded-lg "
            />
             </div>

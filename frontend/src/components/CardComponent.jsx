@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { Rating } from '@mui/material';
-
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 // ovo su parametri
 // { product, isGrid }
 
@@ -14,7 +14,7 @@ function CardComponent({ product, isGrid }) {
       }
     >
       <img
-        src={`http://localhost:8800/uploads/${product.image}`}
+        src={`${BASE_URL}/uploads/${product.image}`}
         alt=''
         className={
           isGrid === 'gridView'

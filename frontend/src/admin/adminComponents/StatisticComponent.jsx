@@ -22,14 +22,16 @@ ChartJS.register(
   Legend
 );
 
-function StatisticComponent() {
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
+function ticComponent() {
   // State za korisnike, porudžbine i prihod
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // Fetch podaci iz API-ja
   useEffect(() => {
-    fetch("http://localhost:8800/api/orders")
+    fetch(`${BASE_URL}/api/orders`)
       .then((res) => res.json())
       .then((data) => {
         setOrders(data); // Postavljamo dobijene porudžbine u state
@@ -101,4 +103,4 @@ function StatisticComponent() {
   
 }  
 
-export default StatisticComponent;
+export default ticComponent;
