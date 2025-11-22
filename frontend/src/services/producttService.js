@@ -1,8 +1,9 @@
 import axios from 'axios';
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const addProduct = async (product) => {
     try {
-        const res = await axios.post('/api/product/addProduct', product, {
+        const res = await axios.post(`${BASE_URL}/api/product/addProduct`, product, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },

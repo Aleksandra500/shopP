@@ -1,10 +1,11 @@
 import axios from "axios";
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const getSingleProduct = async(productID) => {
 
     try {
         
-        const res = await axios.get(`/api/product/singleProduct/${productID}`) 
+        const res = await axios.get(`${BASE_URL}/api/product/singleProduct/${productID}`) 
        
        
         

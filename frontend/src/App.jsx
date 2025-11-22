@@ -12,7 +12,7 @@ import NavBarComponent from './components/NavBarComponent';
 
 //axios
 import axios from 'axios';
-axios.defaults.baseURL='http://localhost:8800';
+// axios.defaults.baseURL='https://aleksandrashop.alwaysdata.net';
 // axios.defaults.baseURL = 'https://dummyjson.com'
 
 
