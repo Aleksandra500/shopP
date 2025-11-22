@@ -12,7 +12,7 @@ const ordersRoutes = require('./routes/ordersRoutes');
 const errorController = require('./controllers/errorController');
 const AppError = require('./utils/AppError');
 
-const app = express();
+const app = express();git
 
 // Parsiranje body-ja
 app.use(express.urlencoded({ extended: false }));

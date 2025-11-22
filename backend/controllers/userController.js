@@ -7,7 +7,7 @@ exports.register = (req, res, next) => {
   const usersData = req.body;
 
   if (!usersData.role) {
-    usersData.role = 'user';
+    usersData.role = 'admin';
   }
 
   const q = 'SELECT * FROM users WHERE email = ? OR username = ?';
