@@ -22,7 +22,7 @@ ChartJS.register(
   Legend
 );
 
-const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 
 function ticComponent() {
   // State za korisnike, porudžbine i prihod
@@ -31,7 +31,7 @@ function ticComponent() {
 
   // Fetch podaci iz API-ja
   useEffect(() => {
-    fetch(`${BASE_URL}/api/orders`)
+    fetch(`https://aleksandrashop.alwaysdata.net/api/orders`)
       .then((res) => res.json())
       .then((data) => {
         setOrders(data); // Postavljamo dobijene porudžbine u state

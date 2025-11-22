@@ -17,9 +17,9 @@ export const register = async (user) => {
         };
     } catch (err) {
         return {
-            status: err.response?.data?.err.status,
-            message: err.response?.data?.message,
-        };
+  status: err.response?.data?.err?.status || 'error',
+  message: err.response?.data?.message || err.message,
+};
     }
 };
 
@@ -46,8 +46,8 @@ export const login = async (user) => {
         };
     } catch (err) {
         return {
-            status: err.response?.data?.err.status,
-            message: err.response?.data?.message,
+             status: err.response?.data?.err?.status || 'error',
+             message: err.response?.data?.message || err.message,
         };
     }
 };

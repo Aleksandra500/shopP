@@ -1,56 +1,64 @@
-const express = require('express')
-const cors = require('cors')
-const errorController = require('./controllers/errorController')
-const productRoutes = require('./routes/productRoutes')
-const userRoutes = require('./routes/userRoutes')
-const ordersRoutes = require('./routes/ordersRoutes')
-const AppError = require('./utils/AppError')
-const multer = require('multer')
-const app = express()
-require("dotenv").config();
+const express = require('express');
+const cors = require('cors');
+const multer = require('multer');
+const path = require('path');
+require('dotenv').config();
+
 const db = require('./db');
+const productRoutes = require('./routes/productRoutes');
+const userRoutes = require('./routes/userRoutes');
+const ordersRoutes = require('./routes/ordersRoutes');
+const errorController = require('./controllers/errorController');
+const AppError = require('./utils/AppError');
 
-app.use(express.urlencoded({ extended: false}))
-app.use(express.json())
+const app = express();
 
-app.use('/uploads', express.static('uploads'));
+// Parsiranje body-ja
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
+// Serve statičkih fajlova (slike)
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-
+// CORS konfiguracija
 const allowedOrigins = [
-    'http://localhost:5173', 
-    process.env.FRONTEND_URL
+    'http://localhost:5173',
+    'https://shop-p-ecru.vercel.app',
+    'https://shop-fujduicqk-aleksandras-projects-79a46c16.vercel.app'
 ];
 
 app.use(cors({
     origin: (origin, callback) => {
-        // Dozvoli sve requestove bez origin-a (npr. mobilne app, curl...)
-        if (!origin) return callback(null, true);
-        if (allowedOrigins.includes(origin)) {
-            return callback(null, true);
-        }
+        if (!origin) return callback(null, true); // npr. curl ili mobilni app
+        if (allowedOrigins.includes(origin)) return callback(null, true);
         return callback(new Error('Not allowed by CORS'));
     },
     credentials: true
 }));
-const upload = multer({ dest: './uploads/' })
 
-app.post('/upload', upload.single('file'), function (req, res, next) {
-    res.status(200).json('image has been uploaded')
-  })
+// Multer za upload slika
+const upload = multer({ dest: path.join(__dirname, 'uploads') });
 
-
-app.use('/api/product', productRoutes )
-app.use('/api/user', userRoutes)
-app.use('/api/orders', ordersRoutes)
-
-app.all('*', (req, res, next) => {
-    return next(new AppError(`Ova stranica ${req.originalUrl} ne postoji`, 404));
+// Endpoint za upload slike
+app.post('/upload', upload.single('file'), (req, res) => {
+    res.status(200).json({ status: 'success', filename: req.file.filename });
 });
 
-app.use(errorController)
+// API rute
+app.use('/api/product', productRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/orders', ordersRoutes);
 
-app.listen(process.env.PORT, () => {
-    console.log('contected 👩‍💻');
-    
-} )
+// 404 za nepostojeće rute
+app.all('*', (req, res, next) => {
+    next(new AppError(`Ova stranica ${req.originalUrl} ne postoji`, 404));
+});
+
+// Globalni error handler
+app.use(errorController);
+
+// Start servera
+const PORT = process.env.PORT || 8800;
+app.listen(PORT, () => {
+    console.log(`Server pokrenut na portu ${PORT} 👩‍💻`);
+});
